@@ -19,13 +19,19 @@ function doIt() {
 	source ~/.bash_profile;
 }
 
-if [ "$1" == "--force" -o "$1" == "-f" ]; then
+if sh -c ": >/dev/tty" >/dev/null 2>/dev/null; then
+   if [ "$1" == "--force" -o "$1" == "-f" ]; then
 	doIt;
-else
+   else
 	read -p "This may overwrite existing files in your home directory. Are you sure? (y/n) " -n 1;
 	echo "";
 	if [[ $REPLY =~ ^[Yy]$ ]]; then
 		doIt;
 	fi;
-fi;
+  fi;
+else
+   doIt # /dev/tty is not available
+fi
+
+
 unset doIt;
