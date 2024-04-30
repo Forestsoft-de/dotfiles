@@ -33,7 +33,7 @@ show_always = true
 [directory]
 truncation_length = 3
 truncation_symbol = "…/"
-home_symbol = "\f0826 ~"
+home_symbol = "⌂ ~"
 read_only_style = "197"
 read_only = " 🔒 "
 format = "at [$path]($style)[$read_only]($read_only_style) "
@@ -98,6 +98,12 @@ contexts = [
 [kubernetes.context_aliases]
 "clcreative-k8s-staging" = "cl-k8s-staging"
 "clcreative-k8s-production" = "cl-k8s-prod"
+
+
+[sudo]
+style = 'bold green'
+symbol = '👩‍💻 '
+disabled = false
 
 [time]
 disabled = false
