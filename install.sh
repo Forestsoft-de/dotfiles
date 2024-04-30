@@ -1,9 +1,6 @@
 #!/usr/bin/env bash
 
-
-if [ ! -x "curl" ]; then
-  sudo apt update && sudo apt install -y curl
-fi
+sudo apt update && sudo apt install -y curl nano rsync
 
 curl -sS https://starship.rs/install.sh | sh
 
