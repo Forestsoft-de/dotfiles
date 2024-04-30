@@ -10,7 +10,7 @@ if [ ! -d ~/.fonts/ ]; then
 fi
 
 if [ ! -x starship ]; then
-  curl -sS https://starship.rs/install.sh | sh -s  -- --force
+  curl -sS https://starship.rs/install.sh | sh -s  -- --force --bin-dir ~/bin/
 fi
 
 cd "$(dirname "${BASH_SOURCE}")";
