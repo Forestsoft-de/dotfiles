@@ -16,7 +16,9 @@ fix_wsl2_interop() {
         fi
     done
 }
-source /usr/share/bash-completion/bash_completion
+if [ -f /usr/share/bash-completion/bash_completion ]; then
+  . /usr/share/bash-completion/bash_completion
+fi
 if [ -x kubectl ]; then
   source <(kubectl completion bash)
 fi 
