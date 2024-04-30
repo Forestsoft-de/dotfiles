@@ -2,7 +2,16 @@
 
 sudo apt update && sudo apt install -y curl nano rsync
 
-curl -sS https://starship.rs/install.sh | sh
+if [ ! -d ~/.fonts/ ]; then
+  mkdir -p ~/.fonts/
+  cd ~/.fonts/
+  wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.2.1/JetBrainsMono.zip
+  unzip JetBrainsMono.zip
+fi
+
+if [ ! -x starship ]; then
+  curl -sS https://starship.rs/install.sh | sh -s  -- --force
+fi
 
 cd "$(dirname "${BASH_SOURCE}")";
 
