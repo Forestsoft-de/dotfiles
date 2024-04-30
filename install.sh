@@ -25,7 +25,7 @@ function doIt() {
 		--exclude "install.sh" \
 		--exclude "README.md" \
 		--exclude "LICENSE-MIT.txt" \
-		-avh . ~;
+		-avh -O . ~;
 	source ~/.bash_profile;
 }
 
