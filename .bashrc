@@ -43,7 +43,7 @@ function lazyfix() {
 
 export PATH=$PATH:/usr/local/go/bin:$HOME/bin
 
-if [ -x $(command -v "starship" ]; then
+if [ -x $(command -v "starship") ]; then
   eval "$(starship init bash)"
 fi
 
