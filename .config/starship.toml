@@ -33,48 +33,53 @@ show_always = true
 [directory]
 truncation_length = 3
 truncation_symbol = "…/"
-home_symbol = " ~"
+home_symbol = "\f0826 ~"
 read_only_style = "197"
-read_only = "  "
+read_only = " 🔒 "
 format = "at [$path]($style)[$read_only]($read_only_style) "
 
 [git_branch]
-symbol = " "
+symbol = "🌱 "
 format = "on [$symbol$branch]($style) "
 truncation_length = 60
 truncation_symbol = "…/"
 style = "bold green"
 
+[git_commit]
+commit_hash_length = 4
+tag_symbol = '🔖 '
+
 [git_status]
 format = '[\($all_status$ahead_behind\)]($style) '
 style = "bold green"
 conflicted = "🏳"
-up_to_date = " "
-untracked = " "
+up_to_date = '✓'
+untracked = '🤷'
 ahead = "⇡${count}"
 diverged = "⇕⇡${ahead_count}⇣${behind_count}"
 behind = "⇣${count}"
-stashed = " "
-modified = " "
+stashed = '📦'
+modified = '📝'
 staged = '[++\($count\)](green)'
-renamed = "襁 "
-deleted = " "
+renamed = '👅'
+deleted = '🗑'
 
 [terraform]
-format = "via [ terraform $version]($style) 壟 [$workspace]($style) "
+format = "via [💨 terraform $version]($style) 壟 [$workspace]($style) "
 
 [vagrant]
 format = "via [ vagrant $version]($style) "
 
 [docker_context]
-format = "via [ $context](bold blue) "
+format = "via [🐋 $context](bold blue) "
 
 [helm]
-format = "via [ $version](bold purple) "
+format = "via [⎈ $version](bold purple) "
 
 [python]
-symbol = " "
+symbol = "👾 "
 python_binary = "python3"
+pyenv_version_name = true
 
 [nodejs]
 format = "via [ $version](bold green) "
@@ -84,8 +89,11 @@ disabled = true
 format = "via [ $version]($style) "
 
 [kubernetes]
-format = 'on [ $context\($namespace\)](bold blue) '
+format = 'on [⛵ ($user on )($cluster in )$context \($namespace\)](dimmed green) '
 disabled = false
+contexts = [
+  { context_pattern = "dev.local.cluster.k8s", style = "green", symbol = "💔 " },
+]
 
 [kubernetes.context_aliases]
 "clcreative-k8s-staging" = "cl-k8s-staging"
