@@ -43,7 +43,9 @@ function lazyfix() {
 
 export PATH=$PATH:/usr/local/go/bin:$HOME/bin
 
-eval "$(starship init bash)"
+if [ -x starship ]; then
+  eval "$(starship init bash)"
+fi
 
 . ~/.bash_aliases
 
