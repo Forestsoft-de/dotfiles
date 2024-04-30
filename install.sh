@@ -10,6 +10,7 @@ if [ ! -d ~/.fonts/ ]; then
 fi
 
 if [ ! -x starship ]; then
+  mkdir -p ~/bin/
   curl -sS https://starship.rs/install.sh | sh -s  -- --force --bin-dir ~/bin/
 fi
 
