@@ -66,3 +66,8 @@ __PS1_AFTER='\[\e[0m\]\n\n'
 export PS1="${__PS1_BEFORE}${__PS1_STATUS}${__PS1_USER}${__PS1_LOCATION}${__PS1_GIT_BRANCH}${__PS1_GIT_DIST}${__PS1_AFTER}"
 
 alias glog="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
+
+export GIT_AUTHOR_NAME=Sebastian
+export GIT_AUTHOR_EMAIL="foerster@forestsoft.de"
+export GIT_COMMITTER_NAME=Sebastian
+export GIT_COMMITTER_EMAIL="foerster@forestsoft.de"
