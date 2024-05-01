@@ -17,7 +17,7 @@ alias myip="curl -k  icanhazip.com ; echo"
 alias wetter="curl wttr.in/Moenchengladbach"
 
 
-if [ -x "kubectl" ]; then
+if [ -x $(command -v "kubectl") ]; then
   alias k='kubectl'
   complete -F __start_kubectl k
   alias kpod='kubectl get pods'
