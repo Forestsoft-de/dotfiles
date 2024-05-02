@@ -19,10 +19,10 @@ fix_wsl2_interop() {
 if [ -f /usr/share/bash-completion/bash_completion ]; then
   . /usr/share/bash-completion/bash_completion
 fi
-if [ -x kubectl ]; then
+if [ -x $(command -v "kubectl") ]; then
   source <(kubectl completion bash)
 fi 
-if [ -x helm ]; then
+if [ -x $(command -v "helm") ]; then
   source <(helm completion bash)
 fi
 
