@@ -5,7 +5,7 @@ if [ "$HOME" == "" ]; then
   exit 2
 fi
 
-sudo apt update && sudo apt install -y curl nano rsync
+sudo apt update && sudo apt install -y curl nano rsync bash-completion
 
 if [ ! -d $HOME/.fonts/ ]; then
   mkdir -p $HOME/.fonts/
