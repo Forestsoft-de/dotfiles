@@ -19,3 +19,9 @@ cd $HOME
 git clone https://Forestsoft-de:${GITHUB_PAT}@github.com/Forestsoft-de/password-store.git $HOME/.password-store
 cd $HOME/.password-store
 ./install.sh
+
+if [ ! -f "$HOME/.ssh/id_rsa" ]; then
+  mkdir -p ${HOME}/.ssh
+  pass ssh/dinkel > ${HOME}/.ssh/id_rsa
+  chmod 400 ${HOME}/.ssh/id_rsa
+fi
