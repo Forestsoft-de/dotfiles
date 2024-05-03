@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 set -e
-export GITHUB_USERNAME=${GITHUB_USERNAME:-"Forestsoft-de"}
+export GITHUB_USER=${GITHUB_USER:-"Forestsoft-de"}
 INSTALL_NEEDED=""
 if [ ! -x "$(command -v git)" ]; then
   INSTALL_NEEDED="$INSTALL_NEEDED git"
@@ -20,5 +20,9 @@ if [ "$INSTALL_NEEDED" != "" ]; then
 fi
 
 if [ ! -x "$(command -v chezmoi)" ]; then
-  sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply "$GITHUB_USERNAME"
+  sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply "$GITHUB_USER"
+else
+  if [ ! -d "$(chezmoi dump-config | jq -r '.sourceDir')" ]; then
+     chezmoi init --apply  "$GITHUB_USER"
+  fi
 fi
