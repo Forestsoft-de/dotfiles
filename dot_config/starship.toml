@@ -93,7 +93,7 @@ format = 'on [⛵ ($user on )($cluster in )$context \($namespace\)](dimmed green
 disabled = false
 
 [[kubernetes.contexts]]
-# "green" style + a different symbol when Kubernetes current context name contains openshift
+# "green" style + a different symbol when Kubernetes current context name contains forestsoft
 context_pattern = ".*forestsoft.*"
 style = "green"
 symbol = "💔 "
