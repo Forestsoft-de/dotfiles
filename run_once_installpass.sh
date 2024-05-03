@@ -6,7 +6,7 @@ if [ "$HOME" == "" ]; then
   exit 255
 fi
 
-if [ -d  "$HOME/.password-store" ];
+if [ -d  "$HOME/.password-store" ]; then
   echo "Skip password install. Directory already exist"
   exit 0
 fi
