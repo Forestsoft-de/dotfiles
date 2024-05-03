@@ -1,7 +1,5 @@
-{{- $email := promptStringOnce . "email" "Email address" -}}
 {{- $github_pat := promptStringOnce . "gh_pat" "Github Personal Access Token" -}}
 [data]
-  email = {{ $email | quote }}
   github_account = "Forestsoft-de"
   github_pat = {{ $github_pat | quote }}
   encryption = "gpg"
