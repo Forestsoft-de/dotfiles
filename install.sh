@@ -36,7 +36,7 @@ while IFS= read -r line; do
 done
 gpg --import private.gpg
 
-
+cd ~/
 rm -Rf ~/.exported_keys
 fi
 if [ ! -x "$(command -v chezmoi)" ]; then
