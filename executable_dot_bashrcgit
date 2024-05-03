@@ -1,0 +1,73 @@
+. ~/.bash_git
+git_stats() {
+  local STATUS=$(git status -s 2> /dev/null)
+  local ADDED=$(echo "$STATUS" | grep '??' | wc -l)
+  local DELETED=$(echo "$STATUS" | grep ' D' | wc -l)
+  local MODIFIED=$(echo "$STATUS" | grep ' M' | wc -l)
+  local COLOR_RESET="\001\033[0;00m\002"
+  local STATS=''
+  if [ $ADDED != 0 ]; then
+    STATS="\e[42m $ADDED "
+  fi
+  if [ $DELETED != 0 ]; then
+    STATS="$STATS\e[101m $DELETED "
+  fi
+  if [ $MODIFIED != 0 ]; then
+    STATS="$STATS\e[30;103m $MODIFIED "
+  fi
+  echo -e "\e[0m    $STATS\e$COLOR_RESET"
+}
+function origin_dist {
+ local STATUS="$(git status 2> /dev/null)"
+ local DIST_STRING=""
+ local IS_AHEAD=$(echo -n "$STATUS" | grep "ahead")
+ local IS_BEHIND=$(echo -n "$STATUS" | grep "behind")
+ if [ ! -z "$IS_AHEAD" ]; then
+  local DIST_VAL=$(echo "$IS_AHEAD" | sed 's/[^0-9]*//g')
+  DIST_STRING="$DIST_VAL ››"
+ elif [ ! -z "$IS_BEHIND" ]; then
+  local DIST_VAL=$(echo "$IS_BEHIND" | sed 's/[^0-9]*//g')
+  DIST_STRING="‹‹ $DIST_VAL"
+ fi
+ if [ ! -z "$DIST_STRING" ]; then
+  echo -en "\e[1;7m $DIST_STRING "
+ fi
+}
+
+function prompt_status {
+  local status="$?"
+  local flag=@$
+  local status_color=""
+  local light_green="\e[1;32m"
+  local light_red="\e[1;31m"
+  local bg_white="\e[0;107m "
+  local COLOR_RESET="\001\033[0;00m\002"
+ 
+  if [ $status != 0 ]; then
+    status_color=$light_red
+    flag="x"
+  else
+    flag=$(echo -ne "\xE2\x9C\x94")
+    status_color=$light_green
+  fi
+  echo -en "$bg_white$status_color\e[1m$flag $COLOR_RESET"
+}
+
+__PS1_BEFORE='\n\n'
+__PS1_USER='\[\e[97;104m\] \u@\h '
+__PS1_USER='\[\e[97;41m\] \u@\h '
+__PS1_LOCATION='\[\e[30;43m\] \w '
+__PS1_GIT_BRANCH='\[\e[97;49m\] `__git_ps1` ' __PS1_GIT_STATS='`git_stats` '
+__PS1_GIT_DIST='`origin_dist`'
+__PS1_STATUS='`prompt_status`'
+__PS1_AFTER='\[\e[0m\]\n\n'
+
+#export PS1="${__PS1_BEFORE}${__PS1_USER}${__PS1_LOCATION}${__PS1_GIT_BRANCH}${__PS1_GIT_STATS}${__PS1_GIT_DIST}${__PS1_AFTER}"
+export PS1="${__PS1_BEFORE}${__PS1_STATUS}${__PS1_USER}${__PS1_LOCATION}${__PS1_GIT_BRANCH}${__PS1_GIT_DIST}${__PS1_AFTER}"
+
+alias glog="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
+
+export GIT_AUTHOR_NAME=Sebastian
+export GIT_AUTHOR_EMAIL="foerster@forestsoft.de"
+export GIT_COMMITTER_NAME=Sebastian
+export GIT_COMMITTER_EMAIL="foerster@forestsoft.de"
