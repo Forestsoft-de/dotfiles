@@ -24,5 +24,6 @@ if [ ! -x "$(command -v chezmoi)" ]; then
 else
   if [ ! -d "$(chezmoi dump-config | jq -r '.sourceDir')" ]; then
      chezmoi init --apply  "$GITHUB_USER"
+     chezmoi git config pull.rebase true
   fi
 fi
