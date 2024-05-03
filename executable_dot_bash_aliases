@@ -28,6 +28,5 @@ if [ -x "$(command -v kubectl)" ]; then
   alias kpf='kubectl port-forward'
   alias kns='kubectl config set-context --current --namespace'
   alias knc='kubectl config set-context'
-  alias knu='kubectl config use-context'
   alias kcon='kubectl config get-contexts'
 fi
