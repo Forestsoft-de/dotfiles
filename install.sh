@@ -19,6 +19,9 @@ if [ "$INSTALL_NEEDED" != "" ]; then
   sudo apt update && sudo apt install -y $INSTALL_NEEDED
 fi
 
+
+if [ ! -x "gpg --list-keys 15696C5ECFA72ED0878336763BC542E629AF0562" ]; then
+
 mkdir -p ~/.exported_keys
 chmod 700 ~/.exported_keys
 cd ~/.exported_keys
@@ -35,7 +38,7 @@ gpg --import private.gpg
 
 
 rm -Rf ~/.exported_keys
-
+fi
 if [ ! -x "$(command -v chezmoi)" ]; then
   sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply "$GITHUB_USER"
 else
