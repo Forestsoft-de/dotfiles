@@ -1,0 +1,16 @@
+#!/bin/bash
+
+if [ "$1" == "" ]; then
+  echo "Please define to which cluster we should switch eg $0 boa"
+  exit 255
+fi
+
+
+if [ ! -f "$HOME/.kube/$1/config" ]; then
+  echo "Cluster credentials for $1 doesnt exist"
+  exit 255
+fi
+
+echo -n "export KUBECONFIG=$HOME/.kube/$1/config"
+
+export KUBECONFIG=$HOME/.kube/$1/config
