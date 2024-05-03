@@ -1,5 +1,18 @@
 #!/usr/bin/env bash
 export GITHUB_USERNAME=${GITHUB_USERNAME:-"Forestsoft-de"}
-if [ ! -x $(command -v "chezmoi") ]; then
+INSTALL_NEEDED=""
+if [ !-x $(command -v "jq") ]; then
+  INSTALL_NEEDED="$INSTALL_NEEDED jq"
+  sudo apt update && sudo apt install -y jq
+fi
+if [ !-x $(command -v "curl") ]; then
+  INSTALL_NEEDED="$INSTALL_NEEDED curl"
+fi
+
+if [ "$INSTALL_NEEDED" != "" ]; then
+	sudo apt update && sudo apt install -y $INSTALL_NEEDED
+fi
+
+if [ !-x $(command -v "chezmoi") ]; then
 	sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply $GITHUB_USERNAME
 fi
