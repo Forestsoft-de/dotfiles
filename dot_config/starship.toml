@@ -1,4 +1,5 @@
 # ~/.config/starship.toml
+"$schema" = 'https://starship.rs/config-schema.json'
 
 # Inserts a blank line between shell prompts
 add_newline = true
