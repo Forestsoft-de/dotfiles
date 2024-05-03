@@ -31,5 +31,5 @@ fi
 if [ ! -f "$HOME/.kube/forestsoft/config" ]; then
   mkdir -p ${HOME}/.kube/forestsoft/
   pass kubeconfigs/rke-forestsoft > ${HOME}/.kube/forestsoft/config
-  chmod 400 -R ${HOME}/.kube/forestsoft/
+  chmod 400 ${HOME}/.kube/forestsoft/config
 fi
