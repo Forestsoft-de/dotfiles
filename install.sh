@@ -2,6 +2,9 @@
 set -e
 export GITHUB_USERNAME=${GITHUB_USERNAME:-"Forestsoft-de"}
 INSTALL_NEEDED=""
+if [ ! -x "$(command -v git)" ]; then
+  INSTALL_NEEDED="$INSTALL_NEEDED git"
+fi
 if [ ! -x "$(command -v sudo)" ]; then
   INSTALL_NEEDED="$INSTALL_NEEDED sudo"
 fi
