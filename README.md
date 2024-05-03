@@ -5,7 +5,7 @@ Used with chezmoi. See: https://www.chezmoi.io/user-guide/command-overview/#dail
 ## Installation
 
 ```bash
-curl -fLs https://raw.githubusercontent.com/Forestsoft-de/dotfiles/master/install.sh | bash -s
+curl -fLs https://raw.githubusercontent.com/Forestsoft-de/dotfiles/master/install.sh > install.sh && chmod +x install.sh && ./install.sh
 ```
 
 
