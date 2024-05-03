@@ -99,11 +99,6 @@ style = "green"
 symbol = "💔 "
 context_alias = "forestsoft"
 
-[kubernetes.context_aliases]
-"clcreative-k8s-staging" = "cl-k8s-staging"
-"clcreative-k8s-production" = "cl-k8s-prod"
-
-
 [sudo]
 style = 'bold green'
 symbol = '👩‍💻 '
