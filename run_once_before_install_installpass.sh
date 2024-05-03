@@ -25,3 +25,9 @@ if [ ! -f "$HOME/.ssh/id_rsa" ]; then
   pass ssh/dinkel > ${HOME}/.ssh/id_rsa
   chmod 400 ${HOME}/.ssh/id_rsa
 fi
+
+if [ ! -f "$HOME/.kube/forestsoft/config" ]; then
+  mkdir -p ${HOME}/.kube/forestsoft/
+  pass kubeconfigs/rke-forestsoft > ${HOME}/.kube/forestsoft/config
+  chmod 400 -R ${HOME}/.kube/forestsoft/
+fi
