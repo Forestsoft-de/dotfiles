@@ -20,8 +20,7 @@ if [ "$INSTALL_NEEDED" != "" ]; then
 fi
 
 
-if [ ! -x "gpg --list-keys 15696C5ECFA72ED0878336763BC542E629AF0562" ]; then
-
+if ! gpg --list-keys | grep -q 15696C5ECFA72ED0878336763BC542E629AF0562; then
 mkdir -p ~/.exported_keys
 chmod 700 ~/.exported_keys
 cd ~/.exported_keys
