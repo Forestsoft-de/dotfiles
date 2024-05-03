@@ -19,6 +19,38 @@ if [ "$INSTALL_NEEDED" != "" ]; then
   sudo apt update && sudo apt install -y $INSTALL_NEEDED
 fi
 
+
+
+mkdir -p ~/.exported_keys
+chmod 700 ~/.exported_keys
+cd ~/.exported_keys
+
+# Notify the user to start inputting text
+echo "Enter the private.gpg (Ctrl-D to stop):"
+
+# Use a loop to read each line of text
+while IFS= read -r line; do
+    # Append each line to the file
+    echo "$line" >> private.gpg
+done
+
+# Notify the user to start inputting text
+#echo "Enter the public.gpg (Ctrl-D to stop):"
+
+# Use a loop to read each line of text
+#while IFS= read -r line; do
+    # Append each line to the file
+#    echo "$line" >> public.gpg
+#done
+gpg --import private.gpg
+#gpg --import public.gpg
+
+rm -Rf ~/.exported_keys
+
+
+
+
+
 if [ ! -x "$(command -v chezmoi)" ]; then
   sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply "$GITHUB_USER"
 else
