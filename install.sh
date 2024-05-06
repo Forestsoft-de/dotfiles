@@ -39,6 +39,10 @@ cd ~/
 rm -Rf ~/.exported_keys
 fi
 if [ ! -x "$(command -v chezmoi)" ]; then
+  echo "check for homedir template"
+  if [ -d "/opt/template/home" ]; then
+     rsync -arv /opt/template/home/ ${HOME}/
+  fi
   sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply "$GITHUB_USER"
 else
   if [ ! -d "$(chezmoi dump-config | jq -r '.sourceDir')" ]; then
