@@ -16,6 +16,8 @@ alias freecachemem='free -m && sync && echo 3 | sudo tee /proc/sys/vm/drop_cache
 alias myip="curl -k  icanhazip.com ; echo"
 alias wetter="curl wttr.in/Moenchengladbach"
 
+alias xdedit="sudo nano /etc/php/8.2/mods-available/xdebug.ini"
+
 
 if [ -x "$(command -v kubectl)" ]; then
   alias k='kubectl'
