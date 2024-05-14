@@ -5,23 +5,19 @@ if [ "$HOME" == "" ]; then
   exit 255
 fi
 
-if [ -d  "$HOME/.password-store" ]; then
-  echo "Skip password install. Directory already exist"
-  exit 0
+if [ ! -d  "$HOME/.password-store" ]; then
+  export GITHUB_PAT=${GITHUB_PAT:-$(chezmoi dump-config | jq -r '.data.github_pat')}
+  export GITHUB_USER=${GITHUB_USER:-$(chezmoi dump-config | jq -r '.data.github_account')}
+
+  if [ "$GITHUB_PAT" == "" ]; then
+    echo "Please define GITHUB_PAT for https://Forestsoft-de:<PAT>@github.com/Forestsoft-de/password-store.git"
+    exit 255
+  fi
+  cd $HOME
+  git clone https://${GITHUB_USER}:${GITHUB_PAT}@github.com/${GITHUB_USER}/password-store.git $HOME/.password-store
+  cd $HOME/.password-store
+  ./install.sh
 fi
-
-export GITHUB_PAT=${GITHUB_PAT:-$(chezmoi dump-config | jq -r '.data.github_pat')}
-export GITHUB_USER=${GITHUB_USER:-$(chezmoi dump-config | jq -r '.data.github_account')}
-
-if [ "$GITHUB_PAT" == "" ]; then
-  echo "Please define GITHUB_PAT for https://Forestsoft-de:<PAT>@github.com/Forestsoft-de/password-store.git"
-  exit 255
-fi
-cd $HOME
-git clone https://${GITHUB_USER}:${GITHUB_PAT}@github.com/${GITHUB_USER}/password-store.git $HOME/.password-store
-cd $HOME/.password-store
-./install.sh
-
 if [ ! -f "$HOME/.ssh/id_rsa" ]; then
   mkdir -p ${HOME}/.ssh
   pass ssh/dinkel > ${HOME}/.ssh/id_rsa
