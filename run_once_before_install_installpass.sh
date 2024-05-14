@@ -21,9 +21,7 @@ fi
 if [ ! -f "$HOME/.ssh/id_rsa" ]; then
   mkdir -p ${HOME}/.ssh
   pass ssh/dinkel > ${HOME}/.ssh/id_rsa
-  set +x
   chmod 400 ${HOME}/.ssh/id_rsa
-  set -x
 fi
 
 if [ ! -f "$HOME/.kube/forestsoft/config" ]; then
