@@ -5,6 +5,8 @@
 	fix = rebase -i HEAD~4
 	st = status -s
 	sta = status
+	ci = commit
+	co = checkout
 [core]
 	excludesFile = ~/.gitignore
 [merge]
