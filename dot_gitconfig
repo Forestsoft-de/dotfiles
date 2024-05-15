@@ -8,21 +8,11 @@
 	ci = commit
 	co = checkout
 	pr = pull --rebase
+	br = branch
+	bra = branch -a
+	hurry = commit -a --amend --no-edit
 [core]
 	excludesFile = ~/.gitignore
-[merge]
-	tool = meld
-[mergetool "meld"]
-	cmd = /mnt/c/Program\\ Files\\ \\(x86\\)/Meld/Meld.exe $LOCAL $BASE $REMOTE --output $MERGED
-[diff]
-	tool = meld
-[difftool "meld"]
-	cmd = /mnt/c/Program\\ Files\\ \\(x86\\)/Meld/Meld.exe $LOCAL $REMOTE
-[mergetool]
-	keepBackup = false
-	prompt = false
-[difftool]
-	prompt = false
 [init]
 	defaultBranch = main
 
