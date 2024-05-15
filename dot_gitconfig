@@ -1,0 +1,27 @@
+[user]
+	name = Sebastian
+	email = foerster@forestsoft.de
+[alias]
+	fix = rebase -i HEAD~4
+	st = status -s
+	sta = status
+[core]
+	excludesFile = ~/.gitignore
+[merge]
+	tool = meld
+[mergetool "meld"]
+	cmd = /mnt/c/Program\\ Files\\ \\(x86\\)/Meld/Meld.exe $LOCAL $BASE $REMOTE --output $MERGED
+[diff]
+	tool = meld
+[difftool "meld"]
+	cmd = /mnt/c/Program\\ Files\\ \\(x86\\)/Meld/Meld.exe $LOCAL $REMOTE
+[mergetool]
+	keepBackup = false
+	prompt = false
+[difftool]
+	prompt = false
+[init]
+	defaultBranch = main
+
+[url "ssh://git@github.com/"]
+	insteadOf = https://github.com/
