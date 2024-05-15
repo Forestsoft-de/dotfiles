@@ -11,6 +11,8 @@
 	br = branch
 	bra = branch -a
 	hurry = commit -a --amend --no-edit
+	tree = log --graph --decorate --oneline
+	treename = log --graph --decorate --name-only --oneline
 [core]
 	excludesFile = ~/.gitignore
 [init]
