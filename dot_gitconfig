@@ -1,6 +1,6 @@
 [user]
 	name = Sebastian
-	email = foerster@forestsoft.de
+	email = sebastian.foerster@halltabakwaren.de
 [alias]
 	fix = rebase -i HEAD~4
 	st = status -s
@@ -9,10 +9,17 @@
 	co = checkout
 	pr = pull --rebase
 	br = branch
+        shortlog = log --pretty=format:"%h%x09%an%x09%ad%x09%s"
 	bra = branch -a
 	hurry = commit -a --amend --no-edit
 	tree = log --graph --decorate --oneline
 	treename = log --graph --decorate --name-only --oneline
+
+[log]
+  date = relative
+[format]
+  pretty = format:%h %Cblue%ad%Creset %ae %Cgreen%s%Creset
+
 [core]
 	excludesFile = ~/.gitignore
 [init]
@@ -20,3 +27,5 @@
 
 [url "ssh://git@github.com/"]
 	insteadOf = https://github.com/
+[pull]
+	ff = only
