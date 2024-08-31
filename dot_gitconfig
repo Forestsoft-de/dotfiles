@@ -1,5 +1,5 @@
 [user]
-	name = Sebastian
+	name = "Sebastian Förster"
 	email = sebastian.foerster@halltabakwaren.de
 [alias]
 	fix = rebase -i HEAD~4
@@ -17,8 +17,10 @@
 
 [log]
   date = relative
+  
 [format]
   pretty = format:%h %Cblue%ad%Creset %ae %Cgreen%s%Creset
+  pretty = %C(yellow)%h%Creset%x09%Cred%<(20)%an%Creset%x09%Cblue%ad%Creset%x09%s%C(auto)%d%Creset
 
 [core]
 	excludesFile = ~/.gitignore
