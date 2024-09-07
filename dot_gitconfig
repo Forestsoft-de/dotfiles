@@ -32,3 +32,5 @@
 	insteadOf = https://github.com/
 [pull]
 	ff = only
+[column]
+	ui = auto
