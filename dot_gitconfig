@@ -34,3 +34,5 @@
 	ff = only
 [column]
 	ui = auto
+[branch]
+	sort = -committerdate
