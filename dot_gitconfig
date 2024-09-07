@@ -38,3 +38,5 @@
 	ui = auto
 [branch]
 	sort = -committerdate
+[rerere]
+	enabled = true
