@@ -16,6 +16,7 @@
 	treename = log --graph --decorate --name-only --oneline
 	staash = stash -u
 	fpush = push --force-with-lease
+	bb = !better-git-branch.sh
 
 [log]
   date = relative
