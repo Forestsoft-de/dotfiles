@@ -40,3 +40,8 @@
 	sort = -committerdate
 [rerere]
 	enabled = true
+[maintenance]
+	repo = /home/sebastian/hall-tabakwaren-shopware-6
+[push]
+	autoSetupRemote = true
+	default = current

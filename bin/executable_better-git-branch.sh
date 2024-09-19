@@ -1,5 +1,5 @@
 #!/bin/bash
-
+#set -x
 # Colors
 RED='\033[0;31m'
 GREEN='\033[0;32m'
@@ -50,6 +50,6 @@ for branchdata in $(git for-each-ref --sort=-authordate --format="$format_string
             behind=$(echo "$ahead_behind" | cut -f1)
             
             # Display branch info
-	    printf "${GREEN}%-${width1}s ${RED}%-${width2}s ${BLUE}%-${width3}s ${YELLOW}%-${width4}s ${NO_COLOR}%-${width5}s\n" $ahead $behind $branch "$time" "$description"
+	    printf "${GREEN}%-${width1}s ${RED}%-${width2}s ${BLUE}%-${width4}s ${YELLOW}%-${width4}s ${NO_COLOR}%-${width5}s\n" $ahead $behind $branch "$time" "$description"
     fi
 done
